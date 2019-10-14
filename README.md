@@ -6,6 +6,20 @@
 
 ## Usage
 
+1. To create a Java/JVM kata project run:
+
+```sh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/VasileUngureanu/kata-scripts/master/create-jvm-kata-project.sh)"
+```
+
+1. To create a Kotlin/JVM kata project run:
+
+```sh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/VasileUngureanu/kata-scripts/master/create-kotlin-jvm-kata-project.sh)"
+```
+
+## Contributing
+
 1. After local cloning run `./bootstrap.sh`.
 
 License
