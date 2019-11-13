@@ -4,6 +4,12 @@
 
 > A collection of scripts for quick creation of kata projects
 
+## Prerequisites
+
+Make sure you have installed all of the following prerequisites on your development machine:
+
+* [curl](https://curl.haxx.se/)
+
 ## Usage
 
 1. To create a Java/JVM kata project run:
