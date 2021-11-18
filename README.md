@@ -1,6 +1,6 @@
 # Kata Scripts
 
-A collection of scripts for quick creation of Kata projects
+A collection of scripts for quick creation of Kata projects.
 
 ## Prerequisites
 
