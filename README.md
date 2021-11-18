@@ -1,8 +1,6 @@
 # Kata Scripts
 
-<a href="https://github.com/VasileUngureanu/repository-template/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License"></a>
-
-> A collection of scripts for quick creation of kata projects
+A collection of scripts for quick creation of Kata projects
 
 ## Prerequisites
 
@@ -23,12 +21,3 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/VasileUngureanu/kata-scrip
 ```sh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/VasileUngureanu/kata-scripts/master/create-kotlin-jvm-kata-project.sh)"
 ```
-
-## Contributing
-
-1. After local cloning run `./bootstrap.sh`.
-
-License
--------
-
-[MIT](LICENSE) @ 2019 Vasile Ungureanu
