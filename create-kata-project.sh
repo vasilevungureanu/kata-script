@@ -21,7 +21,8 @@ fi
 
 echo "Creating Kata project in ${PWD}/${NAME}"
 
-mkdir -p "${NAME}"/src/{main,test}/java/com/vasileungureanu/kata
+mkdir -p "${NAME}"/src/main/java/com/vasileungureanu/kata
+mkdir -p "${NAME}"/src/test/java/com/vasileungureanu/kata
 
 echo "plugins {
     id 'java'
@@ -75,12 +76,12 @@ echo "# ${NAME} Kata" > "${NAME}"/README.md
 echo "#!/usr/bin/env bash
 
 ./gradlew test" > "${NAME}"/tdd.sh
-chmod +x tdd.sh
+chmod +x "${PWD}/${NAME}"/tdd.sh
 
 echo "#!/usr/bin/env bash
 
 (./gradlew test && git commit -am \"$1\") || git reset --hard" > "${NAME}"/tcr.sh
-chmod +x tcr.sh
+chmod +x "${PWD}/${NAME}"/tcr.sh
 
 cd "${NAME}"
 git init
