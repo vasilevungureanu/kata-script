@@ -1,6 +1,6 @@
-# Kata Scripts
+# Kata Script
 
-A collection of scripts for quick creation of Kata projects.
+A script for starting quickly with a Kata.
 
 ## Prerequisites
 
@@ -10,14 +10,6 @@ Make sure you have installed all of the following prerequisites on your developm
 
 ## Usage
 
-1. To create a Java/JVM kata project run:
-
 ```sh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/VasileUngureanu/kata-scripts/master/create-jvm-kata-project.sh)"
-```
-
-1. To create a Kotlin/JVM kata project run:
-
-```sh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/VasileUngureanu/kata-scripts/master/create-kotlin-jvm-kata-project.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/vasilevungureanu/kata-script/main/create-kata-project.sh)"
 ```
