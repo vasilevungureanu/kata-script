@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 #
-# Creates a Java/JVM kata project.
+# Creates a Kata project.
 
 # If a command fails then do not proceed and fail this script too
 set -o errexit
 set -o pipefail
 
-read -rp "Please enter the kata project name: " NAME
+read -rp "Please enter the Kata project name: " NAME
 echo
 export NAME
 
@@ -20,52 +20,41 @@ if [[ -d "${NAME}" ]]; then
   exit 1
 fi
 
-echo "Creating Java/JVM kata project in ${PWD}/${NAME}"
+echo "Creating Kata project in ${PWD}/${NAME}"
 
 mkdir -p "${NAME}"/src/{main,test}/java
 
 echo "plugins {
-    id 'com.adarshr.test-logger' version '1.7.0'
-    id 'com.github.ben-manes.versions' version '0.24.0'
     id 'java'
+    id 'idea'
 }
 
-sourceCompatibility = 1.8
+sourceSets {
+    test {
+        java.srcDir file('src/test/java/')
+    }
+}
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation 'org.mockito:mockito-junit-jupiter:3.0.0'
+    def junitVersion = '5.8.2'
 
-    def junitVersion = '5.5.1'
-    testImplementation \"org.junit.jupiter:junit-jupiter-api:\${junitVersion}\"
-    testImplementation \"org.junit.jupiter:junit-jupiter-params:\${junitVersion}\"
-    testRuntimeOnly \"org.junit.jupiter:junit-jupiter-engine:\${junitVersion}\"
-    testRuntimeOnly \"org.junit.vintage:junit-vintage-engine:\${junitVersion}\"
-
-    testImplementation 'org.assertj:assertj-core:3.13.2'
-
-    // Additional test flavors
-    /*
-    testImplementation 'com.google.truth:truth:1.0'
-    testImplementation 'junit:junit:4.12'
-    testImplementation 'org.hamcrest:hamcrest-all:1.3'
-    */
-}
-
-clean {
-    doFirst {
-        delete 'out'
-    }
+    testImplementation(
+            platform(\"org.junit:junit-bom:\${junitVersion}\"),
+            \"org.junit.jupiter:junit-jupiter:\${junitVersion}\",
+            'org.assertj:assertj-core:3.21.0',
+            'org.mockito:mockito-junit-jupiter:4.1.0'
+    )
 }
 
 test {
     useJUnitPlatform()
+
     testLogging {
-        exceptionFormat = 'full'
-        events = ['passed', 'failed', 'skipped', 'standard_error', 'standard_out']
+        events 'passed', 'skipped', 'failed'
     }
 }" >"${NAME}"/build.gradle
 
