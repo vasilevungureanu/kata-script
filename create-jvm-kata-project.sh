@@ -22,7 +22,7 @@ fi
 
 echo "Creating Kata project in ${PWD}/${NAME}"
 
-mkdir -p "${NAME}"/src/{main,test}/java
+mkdir -p "${NAME}"/src/{main,test}/java/com/vasileungureanu/kata
 
 echo "plugins {
     id 'java'
@@ -57,5 +57,35 @@ test {
         events 'passed', 'skipped', 'failed'
     }
 }" >"${NAME}"/build.gradle
+
+echo ".idea
+.gradle
+*.iml
+*.ipr
+*.iws
+out
+build" > "${NAME}"/.gitignore
+
+echo "root = true
+
+[*]
+insert_final_newline = false" > "${NAME}"/.editorconfig
+
+echo "# ${NAME} Kata" > "${NAME}"/README.md
+
+echo "#!/usr/bin/env bash
+
+./gradlew test" > "${NAME}"/tdd.sh
+chmod +x tdd.sh
+
+echo "#!/usr/bin/env bash
+
+(./gradlew test && git commit -am \"$1\") || git reset --hard" > "${NAME}"/tcr.sh
+chmod +x tcr.sh
+
+cd "${NAME}"
+git init
+git add .
+git commit -m "Init project with gradle build script"
 
 echo "Created successfully! You can now import the project into your IDE."
